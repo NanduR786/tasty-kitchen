@@ -149,6 +149,8 @@ body {
 .login-page {
   display: flex;
   height: 100vh;
+    max-width: 1440px;
+
   width: 100vw;
 }
 
@@ -180,7 +182,7 @@ body {
   padding: 10px;
 }
 
-.brand-logo {
+.login-brand-logo {
   max-width: 53px;
   max-height: 43px;
   top: 298px;
@@ -188,7 +190,7 @@ body {
   opacity: 1;
 }
 
-.brand-name {
+.login-brand-name {
   color: rgba(247, 147, 30, 1);
   font-weight: 700;
   font-size: 24px;
@@ -243,13 +245,13 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  .banner-container {
+ .banner-container {
     display: none;
   }
-  .brand-logo {
+  .login-brand-logo {
     display: none;
   }
-  .brand-name {
+  .login-brand-name {
     display: none;
   }
   .login-form-container{

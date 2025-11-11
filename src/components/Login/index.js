@@ -145,8 +145,8 @@ const Login = () => {
           <img src={banner} alt="mb-banner" />
         </div>
         <form className="login-form" onSubmit={onLogin}>
-          <img src={logo} alt="brand-logo" className="brand-logo" />
-          <h1 className="brand-name">Tasty Kitchens</h1>
+          <img src={logo} alt="login-brand-logo" className="login-brand-logo" />
+          <h1 className="login-brand-name">Tasty Kitchens</h1>
           <h1 className="lgn-heading">Login</h1>
           <div className="input-details">
             <label htmlFor="username">Username</label>
