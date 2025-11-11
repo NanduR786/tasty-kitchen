@@ -1,0 +1,10 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8fafc;
+  position: fixed;
+  width: 1440px;
+  height: 96px;
+  opacity: 1;
+  top: 2px;
+}
