@@ -142,7 +142,7 @@
   box-sizing: border-box;
 } */
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: "DM Sans", sans-serif;
 }
 

@@ -1,0 +1,40 @@
+.restaurant-card-container{
+    display: flex;
+    /* padding: 10px; */
+    /* justify-content: center; */
+    align-items: center;
+    /* max-width: 250px; */
+    width: 33.3%;
+}
+
+.restaurant-card-container img{
+    max-width: 160px;
+    opacity: 1;
+    border-radius: 8px;
+    /* max-height: 78px; */
+    margin: 10px;
+}
+
+/* .restaurant-info-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 174px;
+} */
+
+.restaurant-info-container h1{
+    font-family: "DM Sans";
+font-weight: 700;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: 0.2px;
+color: #334155;
+}
+
+.restaurant-info-container p{
+    font-family: "DM Sans";
+font-weight: 400;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: 0px;
+color: #64748B;
+}

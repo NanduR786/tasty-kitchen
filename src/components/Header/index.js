@@ -21,6 +21,7 @@ const Header = () => {
   };
   return (
     <nav className="nav-container">
+      <div className="nav-content">
       <div className="brand-container">
         <Link to="/"><img src={logo} alt="brand-logo" className="brand-logo" /></Link>
         <h1 className="brand-name">Tasty Kitchens</h1>
@@ -55,7 +56,7 @@ const Header = () => {
             </button>
           </div>
         </div>
-
+</div>
     </nav>
   );
 };

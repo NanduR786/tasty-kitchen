@@ -1,3 +1,71 @@
-.home-section{
-    max-width: 1024px;
+.restaurant-list-section {
+  width: 100%;
+    background-color: #ffffff;
+
+}
+
+.restaurant-details {
+    width: 100%;
+  max-width: 1200px;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+.restaurant-content-container {
+  /* display: flex;
+  justify-content: column;
+  align-items: center;
+  gap: 10px; */
+}
+
+
+
+.restaurant-content-container h1 {
+  font-family: "DM Sans";
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  letter-spacing: 0px;
+  color: #183b56;
+}
+
+.restaurant-content-container p {
+  font-family: "DM Sans";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #64748b;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.home-section-divider{
+    max-width: 1200px;
+}
+
+
+.popular-restaurnats{
+    max-width: 1200px;
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pagination-section{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -9,8 +9,11 @@ const Carousel = (props) => {
   const { carouselData } = props;
   const settings = {
     dots: true,
+    autoplay: true,
+    infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: true,
   };
   return (
     <div className="slider-wrapper">

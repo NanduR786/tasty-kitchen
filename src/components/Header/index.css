@@ -1,4 +1,4 @@
-.nav-container {
+/* .nav-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -8,14 +8,26 @@
   width: 100vw;
   gap: 10px;
   padding: 10px;
+} */
+
+
+.nav-container {
+  background-color: #f8fafc;
+  position: fixed;
+  top: 2px;
+  width: 100vw;
+  padding: 10px 0;
 }
 
-.nav-content-container{
-  max-width: 1024px;
+.nav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 10px;
 }
+
 
 .brand-container{
   display: flex;
