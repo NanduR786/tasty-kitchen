@@ -10,6 +10,7 @@ import RestaurantCard from "../RestaurantCard";
 
 import { SlArrowLeftCircle } from "react-icons/sl";
 import { HiOutlineArrowRightCircle } from "react-icons/hi2";
+import { MdOutlineSort } from "react-icons/md";
 
 import "./index.css";
 
@@ -21,15 +22,16 @@ const Home = () => {
   const [errMsg, setErrMsg] = useState("");
   const [carouselData, setCarouselData] = useState([]);
   const [popularRestaurantsList, setPopularRestaurantList] = useState([]);
+  const [sortOption, setSortOption] = useState("Lowest");
 
   const jwtToken = Cookies.get("jwt_token");
 
   const totalPages = Math.ceil(restaurantCount / 9);
 
-  const getPopularRestaurants = useCallback (async () => {
+  const getPopularRestaurants = useCallback(async () => {
     const offset = (currentPage - 1) * 9;
     setRestaurantsLoading(true);
-    const api = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=9`;
+    const api = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=9&sort_by_rating=${sortOption}`;
     const options = {
       method: "GET",
       headers: {
@@ -38,34 +40,35 @@ const Home = () => {
     };
     const response = await fetch(api, options);
     const result = await response.json();
-    if (response.ok === true) {
-      setRestaurantsLoading(false);
-      setRestaurantCount(result.total);
-      const data = result.restaurants;
-      const updatedData = data.map((eachRestaurant) => ({
-        hasonlineDelivery: eachRestaurant.has_online_delivery,
-        ratingText: eachRestaurant.user_rating.rating_text,
-        ratingColor: eachRestaurant.user_rating.rating_color,
-        totalReviews: eachRestaurant.user_rating.total_reviews,
-        rating: eachRestaurant.user_rating.rating,
-        name: eachRestaurant.name,
-        hasTableBooking: eachRestaurant.has_table_booking,
-        isDeliveringNow: eachRestaurant.is_delivering_now,
-        costForTwo: eachRestaurant.cost_for_two,
-        cuisine: eachRestaurant.cuisine,
-        imageUrl: eachRestaurant.image_url,
-        id: eachRestaurant.id,
-        menuType: eachRestaurant.menu_type,
-        location: eachRestaurant.location,
-        opensAt: eachRestaurant.opens_at,
-      }));
+    try {
+      if (response.ok === true) {
+        setRestaurantsLoading(false);
+        setRestaurantCount(result.total);
+        const data = result.restaurants;
+        const updatedData = data.map((eachRestaurant) => ({
+          hasonlineDelivery: eachRestaurant.has_online_delivery,
+          ratingText: eachRestaurant.user_rating.rating_text,
+          ratingColor: eachRestaurant.user_rating.rating_color,
+          totalReviews: eachRestaurant.user_rating.total_reviews,
+          rating: eachRestaurant.user_rating.rating,
+          name: eachRestaurant.name,
+          hasTableBooking: eachRestaurant.has_table_booking,
+          isDeliveringNow: eachRestaurant.is_delivering_now,
+          costForTwo: eachRestaurant.cost_for_two,
+          cuisine: eachRestaurant.cuisine,
+          imageUrl: eachRestaurant.image_url,
+          id: eachRestaurant.id,
+          menuType: eachRestaurant.menu_type,
+          location: eachRestaurant.location,
+          opensAt: eachRestaurant.opens_at,
+        }));
 
-      setPopularRestaurantList(updatedData);
-    } else {
+        setPopularRestaurantList(updatedData);
+      }
+    } catch (err) {
       console.log("Something Went Wrong");
     }
-  }, [jwtToken, currentPage]);
-  
+  }, [jwtToken, currentPage, sortOption]);
 
   useEffect(() => {
     const getCarouselImages = async () => {
@@ -96,7 +99,6 @@ const Home = () => {
   }, [jwtToken]);
 
   useEffect(() => {
-    
     getPopularRestaurants();
   }, [getPopularRestaurants]);
 
@@ -116,6 +118,10 @@ const Home = () => {
     }
   };
 
+  const updateSortOption = (event) => {
+    setSortOption(event.target.value);
+  };
+
   return (
     <section className="home-section">
       <Header />
@@ -132,12 +138,16 @@ const Home = () => {
             </p>
           </div>
           <div className="filter-container">
-            <h1>Filters</h1>
+            <MdOutlineSort />
+            <select onChange={updateSortOption}>
+              <option value="Lowest">Sort by Lowest Rating</option>
+              <option value="Highest">Sort by Highest Rating</option>
+            </select>
           </div>
         </div>
         <hr className="home-section-divider" />
         <div className="popular-restaurnats">
-            {gettingRestaurantDetails && <Loader />}
+          {gettingRestaurantDetails && <Loader />}
 
           {popularRestaurantsList.map((each) => (
             <RestaurantCard restaurantDetails={each} />

@@ -41,12 +41,36 @@
   color: #64748b;
 }
 
-.filter-container {
+/* .filter-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
+}
+
+.filter-container section{
+  font-weight: 500;
+  color: #475569;
+} */
+
+.filter-container {
+  display: flex;
+  font-family: "DM Sans";
+  font-weight: 500;
+  align-items: center;
+  gap: 6px;
+  color: #475569; 
+  font-size: 14px;
+}
+
+.filter-container select {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  padding-right: 20px;
 }
 
 .home-section-divider{
