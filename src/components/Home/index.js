@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import Carousel from "../Carousel";
 import Header from "../Header";
 import RestaurantCard from "../RestaurantCard";
+import Footer from "../Footer";
 
 import { SlArrowLeftCircle } from "react-icons/sl";
 import { HiOutlineArrowRightCircle } from "react-icons/hi2";
@@ -161,6 +162,7 @@ const Home = () => {
           <HiOutlineArrowRightCircle onClick={getNextPage} />
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
