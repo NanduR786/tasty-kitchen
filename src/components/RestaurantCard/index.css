@@ -1,40 +1,46 @@
 .restaurant-card-container{
     display: flex;
-    /* padding: 10px; */
-    /* justify-content: center; */
     align-items: center;
-    /* max-width: 250px; */
-    width: 33.3%;
+    width: 33.33%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .restaurant-card-container img{
-    max-width: 160px;
+    width: 160px;
+    height: 100px; 
     opacity: 1;
     border-radius: 8px;
-    /* max-height: 78px; */
-    margin: 10px;
+    margin-right: 15px; 
+    object-fit: cover;
+    flex-shrink: 0; 
 }
 
-/* .restaurant-info-container{
-    display: flex;
-    flex-direction: column;
-    max-width: 174px;
-} */
+.restaurant-info-container{
+    flex: 1; 
+    min-width: 0; 
+    overflow: hidden; 
+}
 
 .restaurant-info-container h1{
     font-family: "DM Sans";
-font-weight: 700;
-font-size: 18px;
-line-height: 24px;
-letter-spacing: 0.2px;
-color: #334155;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #334155;
+    margin: 0 0 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .restaurant-info-container p{
     font-family: "DM Sans";
-font-weight: 400;
-font-size: 14px;
-line-height: 24px;
-letter-spacing: 0px;
-color: #64748B;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: #64748B;
+    margin: 0 0 5px 0;
 }

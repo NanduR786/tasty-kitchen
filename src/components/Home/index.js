@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import Loader from "../Loader";
 
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import Carousel from "../Carousel";
 import Header from "../Header";
@@ -23,6 +23,50 @@ const Home = () => {
   const [popularRestaurantsList, setPopularRestaurantList] = useState([]);
 
   const jwtToken = Cookies.get("jwt_token");
+
+  const totalPages = Math.ceil(restaurantCount / 9);
+
+  const getPopularRestaurants = useCallback (async () => {
+    const offset = (currentPage - 1) * 9;
+    setRestaurantsLoading(true);
+    const api = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=9`;
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    };
+    const response = await fetch(api, options);
+    const result = await response.json();
+    if (response.ok === true) {
+      setRestaurantsLoading(false);
+      setRestaurantCount(result.total);
+      const data = result.restaurants;
+      const updatedData = data.map((eachRestaurant) => ({
+        hasonlineDelivery: eachRestaurant.has_online_delivery,
+        ratingText: eachRestaurant.user_rating.rating_text,
+        ratingColor: eachRestaurant.user_rating.rating_color,
+        totalReviews: eachRestaurant.user_rating.total_reviews,
+        rating: eachRestaurant.user_rating.rating,
+        name: eachRestaurant.name,
+        hasTableBooking: eachRestaurant.has_table_booking,
+        isDeliveringNow: eachRestaurant.is_delivering_now,
+        costForTwo: eachRestaurant.cost_for_two,
+        cuisine: eachRestaurant.cuisine,
+        imageUrl: eachRestaurant.image_url,
+        id: eachRestaurant.id,
+        menuType: eachRestaurant.menu_type,
+        location: eachRestaurant.location,
+        opensAt: eachRestaurant.opens_at,
+      }));
+
+      setPopularRestaurantList(updatedData);
+    } else {
+      console.log("Something Went Wrong");
+    }
+  }, [jwtToken, currentPage]);
+  
+
   useEffect(() => {
     const getCarouselImages = async () => {
       setCarouselLoading(true);
@@ -48,66 +92,26 @@ const Home = () => {
         setErrMsg(data.err_msg);
       }
     };
-
-    const getPopularRestaurants = async () => {
-      const offset = (currentPage - 1) * 9;
-      setRestaurantsLoading(true);
-      const api = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=9`;
-      const options = {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${jwtToken}`,
-        },
-      };
-      const response = await fetch(api, options);
-      const result = await response.json();
-      if (response.ok === true) {
-        setRestaurantsLoading(false);
-        setRestaurantCount(result.total);
-        const data = result.restaurants;
-        const updatedData = data.map((eachRestaurant) => ({
-          hasonlineDelivery: eachRestaurant.has_online_delivery,
-          ratingText: eachRestaurant.user_rating.rating_text,
-          ratingColor: eachRestaurant.user_rating.rating_color,
-          totalReviews: eachRestaurant.user_rating.total_reviews,
-          rating: eachRestaurant.user_rating.rating,
-          name: eachRestaurant.name,
-          hasTableBooking: eachRestaurant.has_table_booking,
-          isDeliveringNow: eachRestaurant.is_delivering_now,
-          costForTwo: eachRestaurant.cost_for_two,
-          cuisine: eachRestaurant.cuisine,
-          imageUrl: eachRestaurant.image_url,
-          id: eachRestaurant.id,
-          menuType: eachRestaurant.menu_type,
-          location: eachRestaurant.location,
-          opensAt: eachRestaurant.opens_at,
-        }));
-
-        setPopularRestaurantList(updatedData);
-      } else {
-        console.log("Something Went Wrong");
-      }
-    };
     getCarouselImages();
+  }, [jwtToken]);
+
+  useEffect(() => {
+    
     getPopularRestaurants();
-  }, [jwtToken, currentPage]);
+  }, [getPopularRestaurants]);
 
   if (jwtToken === undefined) {
     return <Navigate to="/login" replace />;
   }
 
   const getPrevPage = () => {
-    if (currentPage === 1) {
-      setCurrentPage(1);
-    } else {
+    if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
     }
   };
 
   const getNextPage = () => {
-    if (currentPage === restaurantCount) {
-      setCurrentPage(restaurantCount);
-    } else {
+    if (currentPage < totalPages) {
       setCurrentPage((prev) => prev + 1);
     }
   };
@@ -133,7 +137,8 @@ const Home = () => {
         </div>
         <hr className="home-section-divider" />
         <div className="popular-restaurnats">
-          {gettingRestaurantDetails && <Loader />}
+            {gettingRestaurantDetails && <Loader />}
+
           {popularRestaurantsList.map((each) => (
             <RestaurantCard restaurantDetails={each} />
           ))}
@@ -141,7 +146,7 @@ const Home = () => {
         <div className="pagination-section">
           <SlArrowLeftCircle onClick={getPrevPage} />
           <p>
-            {currentPage} of {restaurantCount}
+            {currentPage} of {totalPages}
           </p>
           <HiOutlineArrowRightCircle onClick={getNextPage} />
         </div>
