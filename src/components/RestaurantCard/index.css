@@ -4,6 +4,7 @@
     width: 33.33%;
     padding: 10px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .restaurant-card-container img{
@@ -19,7 +20,7 @@
 .restaurant-info-container{
     flex: 1; 
     min-width: 0; 
-    overflow: hidden; 
+    /* overflow: hidden;  */
 }
 
 .restaurant-info-container h1{

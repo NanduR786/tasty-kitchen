@@ -3,12 +3,23 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Cart from "./components/Cart";
+import RestaurantDetails from "./components/RestaurantDetails";
+
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
+        {/* <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        /> */}
         <Route
           path="/"
           element={
@@ -25,6 +36,15 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="restaurant/:id"
+          element={
+            <ProtectedRoute>
+              <RestaurantDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,59 @@
+.menu-item-container{
+     display: flex;
+    align-items: center;
+padding: 10px 10px 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    gap: 5px;
+    margin: 5px;
+}
+
+
+
+.menu-item-container img{
+    width: 255px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+
+}
+
+.menu-details{
+    flex: 1; 
+    /* max-width: 174px;
+max-height: 118px; */
+min-width: 0;
+color: #334155;
+
+}
+
+.menu-details h1{
+    font-family: "DM Sans";
+font-weight: 700;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: 0.2px;
+
+
+}
+
+
+.add-item-container{
+    display: flex;
+    gap: 4px;
+    width: 74px;
+height: 24px;
+align-items: center;
+
+
+}
+
+.add-item-container button{
+    cursor: pointer;
+    background-color: transparent;
+    width: 24px;
+height: 24px;
+
+}
+
+

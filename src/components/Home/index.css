@@ -17,12 +17,7 @@
 
 }
 
-.restaurant-content-container {
-  /* display: flex;
-  justify-content: column;
-  align-items: center;
-  gap: 10px; */
-}
+
 
 
 
@@ -128,4 +123,10 @@ text-align: center;
   .restaurant-card-container{
     width: 100%;
   }
+  .restaurant-content-container {
+  padding-left: 20px;
+}
+.filter-container{
+  padding-left: 20px;
+}
 }

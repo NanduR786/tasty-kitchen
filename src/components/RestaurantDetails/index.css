@@ -1,0 +1,114 @@
+.restaurant-details-section{
+    overflow: hidden;
+}
+.rest-full-data{
+    width: 100%;
+    margin-top: 90px;
+}
+
+
+.restaurant-info-bg-container{
+    padding-top: 10px;
+    background-color: #333333;
+    padding: 4px;
+max-height: 372.517333984375px;
+}
+
+.restaurant-info{
+    max-width: 1200px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 10px;
+    max-height: 280px;
+    margin: 0 auto;
+}
+
+.details-section{
+    /* display: flex; */
+    /* flex-direction: column; */
+    color: #E2E8F0;
+    min-width: 320px;
+max-height: 280px;
+opacity: 1;
+
+}
+
+
+.details-section h1{
+    font-family: Roboto;
+font-weight: 500;
+font-size: 36px;
+line-height: 48px;
+letter-spacing: 0.2px;
+}
+
+.review-cost-section{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.vertical-divider-line {
+  width: 1px;                /* line thickness */
+  height: 40px;              /* line height */
+  background-color: #e2e2e2; /* line color */
+  margin: 0 12px;            /* spacing between content */
+}
+
+
+.restaurant-info img{
+    max-width: 445px;
+max-height: 280px;
+opacity: 1;
+border-radius: 8px;
+
+}
+
+.items-section{
+   max-width: 1200px;
+    padding: 10px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+    .items-section{
+        /* flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start; */
+        grid-template-columns: auto;
+    } 
+
+    .restaurant-info{
+        width: 100vw;
+min-height: 188px;
+
+    }
+
+    .restaurant-info img{
+        /* width: 221px;
+height: 221px;
+top: -54px;
+left: -68px;
+opacity: 1;
+border-radius: 133.98px; */
+
+width: 221px;
+        height: 221px;
+        position: absolute;
+        /* inset: 0px auto auto -28px; */
+        top: 93px;
+        left: -76px;
+        opacity: 1;
+        border-radius: 133.98px;
+    }
+    .details-section{
+        z-index: 1;
+    }
+}
