@@ -1,20 +1,21 @@
-import { useState } from "react";
+import {  useContext } from "react";
 import "./index.css";
 
+import { CartContext } from "../../Context/CartContext";
+
 const MenuItem = ({ itemDetails }) => {
-    const [itemCount, setItemCount] = useState(0)
-  const { name, cost, image } = itemDetails;
+  const { name, cost, image,id } = itemDetails;
+
+  const { addCartItem, removeCartItem, getItemQuantity } = useContext(CartContext);
+  const itemCount = getItemQuantity(id)
+
 
   const onIncreaseCount = () => {
-    setItemCount(prev=>prev+1)
+    addCartItem(itemDetails)
   }
 
   const onDecreaseCount = () => {
-    if(itemCount>1){
-    setItemCount(prev=>prev-1)
-    }else{
-        setItemCount(0)
-    }
+    removeCartItem(id)
   }
 
   return (

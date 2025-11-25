@@ -1,0 +1,28 @@
+.empty-cart-container{
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.empty-cart--img{
+    width: 425px;
+height: 367px;
+
+opacity: 1;
+}
+
+.order-now-btn{
+    border-radius: 8px;
+  background-color: rgba(247, 147, 30, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+
